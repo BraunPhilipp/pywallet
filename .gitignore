@@ -1,3 +1,4 @@
-data/*
 *.pyc
 *.log
+__db.*
+__pycache__

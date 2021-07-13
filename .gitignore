@@ -2,3 +2,4 @@
 *.log
 __db.*
 __pycache__
+log.*

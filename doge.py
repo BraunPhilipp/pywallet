@@ -5,7 +5,7 @@ import pandas
 ## arguments
 wrdir = "./data"
 wname = "doge.dat"
-csvf = "./data/doge.csv"
+csvf = "./data/dogewatch.csv" # doge.csv
 
 ## open wallet
 network_doge = pywallet.Network('Dogecoin', 0x1e, 0x16, 0x9e, 'doge')

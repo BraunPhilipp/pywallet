@@ -12,6 +12,7 @@ RUN apt-get update \
     libdb++-dev \
     make \
     python-pip \
+    python3-pip \
     python2.7 \
     python2.7-dev \
     ssh \
@@ -25,6 +26,9 @@ RUN apt-get update \
                         make \
                         wget
 
-RUN pip install ecdsa pandas
+RUN pip install ecdsa pandas bipwallet
+RUN pip3 install ecdsa pandas bipwallet
 RUN export BERKELEYDB_DIR=/usr \
     && pip install bsddb3
+RUN export BERKELEYDB_DIR=/usr \
+    && pip3 install bsddb3

@@ -6,7 +6,7 @@ import json
 
 
 # arguments
-csvf = "./wallets/litewatch.csv"
+csvf = "./wallets/dogewatch.csv"
 xpub = "dgub8roKwYEpHT6MX6CCofpkhF9UZtHvMfKXLwcFqY34MsasoomwDo7mTi6CLLJFbnjrxuhvz5gZFaAJcSPw2ZaRa8c6qfWhQQ2MShAAh4B9d36"
 
 # https://iancoleman.io/bip39/#english
@@ -23,10 +23,10 @@ for index, row in df.iterrows():
     addresses.append(address)
 
 balance = 0
-for idx in range(0, len(addresses), 100):
-    addresses_batch = addresses[idx:idx+100]
+for idx in range(0, len(addresses), 200):
+    addresses_batch = addresses[idx:idx+200]
     addresses_batch = ",".join(addresses_batch)
-    endpoint = f"https://api.blockchair.com/litecoin/addresses/balances?addresses={addresses_batch}"
+    endpoint = f"https://api.blockchair.com/dogecoin/addresses/balances?addresses={addresses_batch}"
     data = json.loads(requests.get(endpoint).text)["data"]
     print(data)
     if data is not None and not isinstance(data, list):
@@ -36,5 +36,5 @@ for idx in range(0, len(addresses), 100):
 
 print(balance)
 
-# 140845.99053285999 DOGE (24707.59 USD)
+# 712055.5676157402 DOGE (124328.33 USD)
 # 97.71593967999999 LTC (11436.8 USD)

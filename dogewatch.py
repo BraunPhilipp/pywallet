@@ -23,7 +23,9 @@ for index, row in df.iterrows():
     publ = row["public key"]
     priv = "QWk7QCSScsZP22QFsx45SdHNoBjQ35T7po1hssVJ2tpam3pexF1a"
 
-    pywallet.importprivkey(dbr, priv, "recovered: %s" % priv, True, True)
+    print(row["address"])
+    
+    pywallet.update_wallet(dbr, 'key', { 'public_key' : publ, 'private_key' : priv })
 
 # pywallet.read_wallet(
 #     pywallet.json_db, dbr_env, wname, True, True, "", None, True

@@ -1,6 +1,6 @@
 ## Run
 
-Before running make sure to copy your current `wallet.dat` backup into the `data` directory and rename to `doge.dat` or `lite.dat`. Copy the the csv file with the public and private keys into the same directory. The script will add the keys in the csv file to
+Before running make sure to copy your current `wallet.dat` backup into the `wallets` directory and rename to `doge.dat` or `lite.dat`. Copy the the csv file with the public and private keys into the same directory. The script will add the keys in the csv file to
 the wallet. After adding all the keys you will need to rename and copy the augmented file back to your `%appdata%` directory (windows). Running the wallet will take approx. 2 hours to rescan. All balances should show up without issues.
 
 ````

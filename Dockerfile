@@ -26,8 +26,8 @@ RUN apt-get update \
                         make \
                         wget
 
-RUN pip install ecdsa pandas bipwallet
-RUN pip3 install ecdsa pandas bipwallet
+RUN pip install ecdsa pandas
+RUN pip3 install ecdsa pandas
 RUN export BERKELEYDB_DIR=/usr \
     && pip install bsddb3
 RUN export BERKELEYDB_DIR=/usr \

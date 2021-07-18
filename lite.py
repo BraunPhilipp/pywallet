@@ -3,9 +3,9 @@ import pandas
 
 
 ## arguments
-wrdir = "./data"
+wrdir = "./wallets"
 wname = "lite.dat"
-csvf = "./data/lite.csv"
+csvf = "./wallets/lite.csv"
 
 # base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,48);
 # base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);

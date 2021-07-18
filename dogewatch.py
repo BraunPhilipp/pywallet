@@ -1,34 +1,40 @@
-import pywallet
 import pandas
+import time
+from datetime import datetime
+import requests
+import json
 
 
-## arguments
-wrdir = "./wallets"
-wname = "doge.dat"
-csvf = "./wallets/dogewatch.csv" # doge.csv
+# arguments
+csvf = "./wallets/litewatch.csv"
+xpub = "dgub8roKwYEpHT6MX6CCofpkhF9UZtHvMfKXLwcFqY34MsasoomwDo7mTi6CLLJFbnjrxuhvz5gZFaAJcSPw2ZaRa8c6qfWhQQ2MShAAh4B9d36"
 
-## open wallet
-network_doge = pywallet.Network('Dogecoin', 0x1e, 0x16, 0x9e, 'doge')
-pywallet.network = network_doge
+# https://iancoleman.io/bip39/#english
+# https://blockchair.com/bitcoin/xpub/xpub6DXRxywCQ9ampUyumwiFiRQ1MTf5oKLipT3YQHyh88co6Eh2epEZvuX7eFGufdEzGw7rAoxRqBFNpTXKAmFYbZe4QeudCMjKtfwYrkuDHod
 
-dbr_env = pywallet.create_env(wrdir)
-# pywallet.create_new_wallet(dbr_env, wname, 1140300) # 180100
-dbr = pywallet.open_wallet(dbr_env, wname, True)
-
-## add private keys
+# get addresses
 df = pandas.read_csv(csvf)
+balance = 0
 
+addresses = []
 for index, row in df.iterrows():
-    addr = row["address"]
-    publ = row["public key"]
-    priv = "QWk7QCSScsZP22QFsx45SdHNoBjQ35T7po1hssVJ2tpam3pexF1a"
+    address = row["address"]
+    public_key = row["public key"]
+    addresses.append(address)
 
-    print(row["address"])
-    
-    pywallet.update_wallet(dbr, 'key', { 'public_key' : publ, 'private_key' : priv })
+balance = 0
+for idx in range(0, len(addresses), 100):
+    addresses_batch = addresses[idx:idx+100]
+    addresses_batch = ",".join(addresses_batch)
+    endpoint = f"https://api.blockchair.com/litecoin/addresses/balances?addresses={addresses_batch}"
+    data = json.loads(requests.get(endpoint).text)["data"]
+    print(data)
+    if data is not None and not isinstance(data, list):
+        for k, v in data.items():
+            balance += float(v) / (10**8)
+    time.sleep(0.1)
 
-# pywallet.read_wallet(
-#     pywallet.json_db, dbr_env, wname, True, True, "", None, True
-# )
+print(balance)
 
-dbr.close()
+# 140845.99053285999 DOGE (24707.59 USD)
+# 97.71593967999999 LTC (11436.8 USD)

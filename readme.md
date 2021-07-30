@@ -23,7 +23,7 @@ was primarily built to monitor addresses during the pulsechain sacrifice phase.
 
 **Note**
 
-Wallet tracking might fail for too many calls due to rate limiting by BlockChair. ZCash Qt supports address book import from a modified csv file. LiteCoin is upgraded to a Bitcoin Core client that supports address imports via RPC calls. For DogeCoin I was not able to find any usable RPC call.
+Wallet tracking might fail for too many API calls due to rate limiting by BlockChair. ZCash Qt supports address book import from a modified CSV file. LiteCoin is upgraded to a Bitcoin Core client that supports address imports via RPC calls. For DogeCoin I was not able to find any usable RPC call.
 
 ````
 docker build -t pywallet .

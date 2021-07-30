@@ -7,10 +7,12 @@ import json
 
 # arguments
 csvf = "./wallets/dogewatch.csv"
-xpub = "dgub8roKwYEpHT6MX6CCofpkhF9UZtHvMfKXLwcFqY34MsasoomwDo7mTi6CLLJFbnjrxuhvz5gZFaAJcSPw2ZaRa8c6qfWhQQ2MShAAh4B9d36"
+csvf = "./wallets/litewatch.csv"
 
-# https://iancoleman.io/bip39/#english
-# https://blockchair.com/bitcoin/xpub/xpub6DXRxywCQ9ampUyumwiFiRQ1MTf5oKLipT3YQHyh88co6Eh2epEZvuX7eFGufdEzGw7rAoxRqBFNpTXKAmFYbZe4QeudCMjKtfwYrkuDHod
+
+chain = "dogecoin" # litecoin
+
+
 
 # get addresses
 df = pandas.read_csv(csvf)
@@ -26,7 +28,7 @@ balance = 0
 for idx in range(0, len(addresses), 200):
     addresses_batch = addresses[idx:idx+200]
     addresses_batch = ",".join(addresses_batch)
-    endpoint = f"https://api.blockchair.com/dogecoin/addresses/balances?addresses={addresses_batch}"
+    endpoint = f"https://api.blockchair.com/{chain}/addresses/balances?addresses={addresses_batch}"
     data = json.loads(requests.get(endpoint).text)["data"]
     print(data)
     if data is not None and not isinstance(data, list):

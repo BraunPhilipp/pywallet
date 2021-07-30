@@ -1,5 +1,0 @@
-
-## rpc calls
-
-# importaddress
-# listreceivedbyaddress

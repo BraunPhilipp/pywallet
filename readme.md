@@ -21,11 +21,9 @@ was primarily built to monitor addresses during the pulsechain sacrifice phase.
 2. Copy and rename the csv file to `doge-watch.csv`, `lite-watch.csv` or `zcash-watch.csv` inside your `wallets` directory
 3. Execute your `watch.py --zcash` or your respective chain
 
-**Wallet api**
+**Note**
 
-1. Generate a csv file using  https://iancoleman.io/bip39/#english from xpub
-2. Copy and rename the csv file to `doge-watch.csv`, `lite-watch.csv` or `zcash-watch.csv` inside your `wallets` directory
-3. Execute your `api.py --zcash` or your respective chain
+Wallet tracking might fail for too many calls due to rate limiting by BlockChair. ZCash Qt supports address book import from a modified csv file. LiteCoin is upgraded to a Bitcoin Core client that supports address imports via RPC calls. For DogeCoin I was not able to find any usable RPC call.
 
 ````
 docker build -t pywallet .

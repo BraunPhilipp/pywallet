@@ -3,15 +3,28 @@ import time
 from datetime import datetime
 import requests
 import json
+import argparse
 
 
-# arguments
-csvf = "./wallets/dogewatch.csv"
-csvf = "./wallets/litewatch.csv"
+# parse arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("-doge", "--doge", action="store_true")
+parser.add_argument("-lite", "--lite", action="store_true")
+parser.add_argument("-zcash", "--zcash", action="store_true")
+args = parser.parse_args()
 
-
-chain = "dogecoin" # litecoin
-
+# select chain
+if args.doge:
+    chain = "dogecoin"
+    csvf = "./wallets/doge-watch.csv"
+elif args.doge:
+    chain = "litecoin"
+    csvf = "./wallets/lite-watch.csv"
+elif args.zcash:
+    chain = "zcash"
+    csvf = "./wallets/zcash-watch.csv"
+else:
+    raise ValueError("Please select --doge, --lite or --zcash")
 
 
 # get addresses
@@ -36,6 +49,4 @@ for idx in range(0, len(addresses), 200):
             balance += float(v) / (10**8)
     time.sleep(0.1)
 
-print(balance)
-
-# 1499430.6675273506 DOGE (238680.41 USD)
+print(f">> {balance} {chain}")

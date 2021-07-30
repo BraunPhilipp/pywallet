@@ -28,7 +28,7 @@ a different BerkleyDB version and a modified `wallet.dat`. Did not investigate f
 
 ````
 docker build -t pywallet .
-docker run -it --rm -v C:/Users/35898/OneDrive/Desktop/pywallet:/home -p 8050:8050 pywallet
+docker run -it --rm -v C:/Users/35898/OneDrive/Desktop/pywallet:/home -p 18232:18232 pywallet
 
 python wallet.py --doge
 python3 watch.py --doge

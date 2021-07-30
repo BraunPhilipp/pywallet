@@ -3,3 +3,4 @@
 __db.*
 __pycache__
 log.*
+lightwalletd

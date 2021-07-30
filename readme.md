@@ -8,9 +8,9 @@ was primarily built to monitor addresses during the pulsechain sacrifice phase.
 **Wallet import**
 
 1. Copy current `wallet.dat` from your `%appdata%` directory into the `wallets` directory (Windows)
-2. Rename `wallet.dat` to `doge.dat`, `lite.dat` or `zcash.dat` depending on the chain you choose
+2. Rename `wallet.dat` to `doge.dat` or `lite.dat` depending on the chain you choose
 3. Derive public and private keys using https://iancoleman.io/bip39/#english
-4. Copy csv file into the `wallets` directory as `doge.csv`, `lite.csv` or `zcash.csv`
+4. Copy csv file into the `wallets` directory as `doge.csv` or `lite.csv`
 5. Run the wallet injection script
 6. Copy the modified `.dat` file and rename to `wallet.dat`
 7. Run you wallet client and resync
@@ -18,12 +18,13 @@ was primarily built to monitor addresses during the pulsechain sacrifice phase.
 **Wallet tracking**
 
 1. Generate a csv file using  https://iancoleman.io/bip39/#english from xpub
-2. Copy and rename the csv file to `doge-watch.csv`, `lite-watch.csv` or `zcash-watch.csv` inside your `wallets` directory
-3. Execute your `watch.py --zcash` or your respective chain
+2. Copy and rename the csv file to `doge-watch.csv` or `lite-watch.csv` inside your `wallets` directory
+3. Execute your `watch.py --doge` or your respective chain
 
 **Note**
 
-Wallet tracking might fail for too many API calls due to rate limiting by BlockChair. ZCash Qt supports address book import from a modified CSV file. LiteCoin is upgraded to a Bitcoin Core client that supports address imports via RPC calls. For DogeCoin I was not able to find any usable RPC call.
+Wallet tracking might fail for too many API calls due to rate limiting by BlockChair. ZCash Qt supports address book import from a modified CSV file https://github.com/ZcashFoundation/zecwallet/releases/tag/v0.5.6. LiteCoin is upgraded to a Bitcoin Core client that supports address imports via RPC calls. For DogeCoin I was not able to find any usable RPC call. ZCash wallet injection fails due to 
+a different BerkleyDB version and a modified `wallet.dat`. Did not investigate further.
 
 ````
 docker build -t pywallet .
@@ -31,6 +32,7 @@ docker run -it --rm -v C:/Users/35898/OneDrive/Desktop/pywallet:/home -p 8050:80
 
 python wallet.py --doge
 python3 watch.py --doge
+python3 convert.py &> zcash.log
 ````
 
 ### Addresses

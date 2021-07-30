@@ -45,8 +45,8 @@ for index, row in tqdm(df.iterrows()):
 
     pywallet.importprivkey(dbr, priv, "recovered: %s" % priv, True, True)
 
-# pywallet.read_wallet(
-#     pywallet.json_db, dbr_env, wname, True, True, "", None, True
-# )
+pywallet.read_wallet(
+    pywallet.json_db, dbr_env, wname, True, True, "", None, True
+)
 
 dbr.close()

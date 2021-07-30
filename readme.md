@@ -18,8 +18,14 @@ was primarily built to monitor addresses during the pulsechain sacrifice phase.
 **Wallet tracking**
 
 1. Generate a csv file using  https://iancoleman.io/bip39/#english from xpub
-2. Copy and rename the csv file to `doge.csv`, `lite.csv` or `zcash.csv` inside your `wallets` directory
+2. Copy and rename the csv file to `doge-watch.csv`, `lite-watch.csv` or `zcash-watch.csv` inside your `wallets` directory
 3. Execute your `watch.py --zcash` or your respective chain
+
+**Wallet api**
+
+1. Generate a csv file using  https://iancoleman.io/bip39/#english from xpub
+2. Copy and rename the csv file to `doge-watch.csv`, `lite-watch.csv` or `zcash-watch.csv` inside your `wallets` directory
+3. Execute your `api.py --zcash` or your respective chain
 
 ````
 docker build -t pywallet .

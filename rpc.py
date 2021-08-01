@@ -26,7 +26,7 @@ for idx in range(0, len(pubs), 200):
     response = json.loads(response.text)
 
     if response["result"] is not None:
-        print(response["result"])
+        print(pubsBatch[0], response["result"])
         total += float(response["result"]["received"]) / (10**8)
 
     # print(response)
